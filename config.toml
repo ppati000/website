@@ -1,0 +1,4 @@
+baseURL = "http://patrick.engineering"
+languageCode = "en-us"
+title = "Patrick Petrovic | Software Engineer"
+theme = "ppati000"
