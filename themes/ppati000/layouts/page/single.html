@@ -1,0 +1,60 @@
+{{ define "header" }}{{ partial "page-header.html" . }}{{ end }}
+{{ define "main" }}
+{{ $featured_image := .Param "page_image"}}
+{{ if $featured_image }}
+{{/* Trimming the slash and adding absURL make sure the image works no matter where our site lives */}}
+{{ $featured_image := (trim $featured_image "/") | absURL }}
+<style>
+    .featuredImage {
+        height: 300px;
+        width: 300px;
+    }
+
+    @media only screen and (max-width: 900px) {
+        .featuredImage {
+            margin: 5rem auto 0;
+            display: block;
+        }
+    }
+
+    @media only screen and (min-width: 900px) {
+        .outerDiv {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            padding-right: 2rem
+        }
+    }
+</style>
+  <div class="flex-l mt2 mw8 center outerDiv">
+      <img src="{{$featured_image}}" class="featuredImage">
+      <article class="center cf pv5 ph3 ph4-ns mw7" style="@media (max-width: 900px) width: 100%">
+        <p class="f6 b helvetica tracked">
+          {{ humanize .Section | upper  }}
+        </p>
+        <h1 class="f1">
+          {{ .Title }}
+        </h1>
+      <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
+        {{ .Content }}
+      </div>
+    </article>
+  </div>
+{{ else }}
+<div class="flex-l mt2 mw8 center">
+  <article class="center cf pv5 ph3 ph4-ns mw7">
+    <header>
+      <p class="f6 b helvetica tracked">
+        {{ humanize .Section | upper  }}
+      </p>
+      <h1 class="f1">
+        {{ .Title }}
+      </h1>
+    </header>
+    <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
+      {{ .Content }}
+    </div>
+  </article>
+</div>
+{{ end }}
+{{ end }}
