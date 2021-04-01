@@ -5,7 +5,18 @@
     <link>http://patrick.engineering/</link>
     <description>Recent content on Patrick&#39;s Engineering Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://patrick.engineering/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Mar 2021 20:37:12 +0200</lastBuildDate><atom:link href="http://patrick.engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coming Soon</title>
+      <link>http://patrick.engineering/posts/welcome/</link>
+      <pubDate>Mon, 29 Mar 2021 20:37:12 +0200</pubDate>
+      
+      <guid>http://patrick.engineering/posts/welcome/</guid>
+      <description>Welcome to my blog! I&amp;rsquo;ll publish emotional rants and other random thoughts here every sometimes. Until then, I&amp;rsquo;m enjoying the sun for a bit.
+ </description>
+    </item>
+    
     <item>
       <title>Hi, I&#39;m Patrick.</title>
       <link>http://patrick.engineering/about/</link>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Patrick&#39;s Engineering Blog</title>
+    <link>http://patrick.engineering/posts/</link>
+    <description>Recent content in Posts on Patrick&#39;s Engineering Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Mar 2021 20:37:12 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coming Soon</title>
+      <link>http://patrick.engineering/posts/welcome/</link>
+      <pubDate>Mon, 29 Mar 2021 20:37:12 +0200</pubDate>
+      
+      <guid>http://patrick.engineering/posts/welcome/</guid>
+      <description>Welcome to my blog! I&amp;rsquo;ll publish emotional rants and other random thoughts here every sometimes. Until then, I&amp;rsquo;m enjoying the sun for a bit.
+ </description>
+    </item>
+    
+  </channel>
+</rss>

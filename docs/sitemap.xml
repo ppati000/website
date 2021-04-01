@@ -2,12 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://patrick.engineering/posts/welcome/</loc>
+    <lastmod>2021-03-29T20:37:12+02:00</lastmod>
+  </url><url>
     <loc>http://patrick.engineering/about/</loc>
     <lastmod>2021-03-29T20:37:12+02:00</lastmod>
   </url><url>
-    <loc>http://patrick.engineering/categories/</loc>
-  </url><url>
     <loc>http://patrick.engineering/</loc>
+    <lastmod>2021-03-29T20:37:12+02:00</lastmod>
+  </url><url>
+    <loc>http://patrick.engineering/posts/</loc>
+    <lastmod>2021-03-29T20:37:12+02:00</lastmod>
+  </url><url>
+    <loc>http://patrick.engineering/categories/</loc>
   </url><url>
     <loc>http://patrick.engineering/tags/</loc>
   </url>

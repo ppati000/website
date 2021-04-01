@@ -5,3 +5,21 @@ theme = "ppati000"
 
 [params]
   author = "Patrick Petrovic"
+  show_reading_time = true
+
+[markup.goldmark.renderer]
+  unsafe= true
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = -120
+
+  [[menu.main]]
+    identifier = "about"
+    pre = "|&nbsp;"
+    name = "About Me"
+    url = "/about/"
+    weight = -110
