@@ -3,14 +3,9 @@
 {{ $icon_size := "32px" }}
 
 {{ if not .Params.disable_share }}
-  <div id="sharing" class="mt3">
-
-    {{ $facebook_href := printf "https://www.facebook.com/sharer.php?u=%s" $url }}
-    <a href="{{ $facebook_href }}" class="facebook no-underline" aria-label="share on Facebook">
-      {{ partialCached "svg/facebook.svg" (dict "size" $icon_size) $icon_size }}
-    </a>
-
-    {{ $twitter_href := printf "https://twitter.com/share?url=%s&text=%s" $url $title }}
+  <div id="sharing" class="mt3" style="padding-top: 20px; display: flex; flex-direction: row; justify-content: flex-start">
+    <i>Liked this post? Get in touch!&nbsp;</i>
+    {{ $twitter_href := printf "https://twitter.com/ppati000" }}
     {{ with .Site.Social.twitter }}
       {{ $twitter_href = printf "%s&via=%s" $twitter_href . }}
     {{ end }}
@@ -18,9 +13,14 @@
       {{ partialCached "svg/twitter.svg" (dict "size" $icon_size) $icon_size }}
     </a>
 
-    {{ $linkedin_href := printf "https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s" $url $title }}
+    {{ $linkedin_href := printf "https://www.linkedin.com/in/patrick-petrovic" }}
     <a href="{{ $linkedin_href }}" class="linkedin no-underline" aria-label="share on LinkedIn">
       {{ partialCached "svg/linkedin.svg" (dict "size" $icon_size) $icon_size }}
+    </a>
+
+    {{ $github_href := printf "https://github.com/ppati000" }}
+    <a href="{{ $github_href }}" class="github no-underline" aria-label="share on LinkedIn">
+      {{ partialCached "svg/github.svg" (dict "size" $icon_size) $icon_size }}
     </a>
   </div>
 {{ end }}

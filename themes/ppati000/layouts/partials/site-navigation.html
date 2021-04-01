@@ -10,15 +10,35 @@
     <div class="flex-l items-center">
       {{ partial "i18nlist.html" . }}
       {{ if .Site.Menus.main }}
-        <ul class="pl0 mr3">
+        <ul class="mr3 pl0" style="display: flex; flex-direction: row; align-items: center">
           {{ range .Site.Menus.main }}
-          <li class="list f5 f4-ns fw4 dib pr3 menuItems">
+          <li class="list f5 f4-ns fw4 dib pr3" style="line-height: 32px">
             <a class="hover-white no-underline white-90" style="font-family: monospace" href="{{ .URL }}" title="{{ .Name }} page">
               {{ .Pre }}
               {{ .Name }}
             </a>
           </li>
           {{ end }}
+          {{ $twitter_href := printf "https://twitter.com/ppati000" }}
+          {{ with .Site.Social.twitter }}
+          {{ $twitter_href = printf "%s&via=%s" $twitter_href . }}
+          {{ end }}
+          {{ $icon_size := "32px" }}
+          <li class="list f5 f4-ns fw4 dib menuItems" style="flex: 1; display: flex; justify-content: flex-end">
+            <a href="{{ $twitter_href }}" class="twitter no-underline" aria-label="share on Twitter">
+              {{ partialCached "svg/twitter.svg" (dict "size" $icon_size) $icon_size }}
+            </a>
+
+            {{ $linkedin_href := printf "https://www.linkedin.com/in/patrick-petrovic" }}
+            <a href="{{ $linkedin_href }}" class="linkedin no-underline" aria-label="share on LinkedIn">
+              {{ partialCached "svg/linkedin.svg" (dict "size" $icon_size) $icon_size }}
+            </a>
+
+            {{ $github_href := printf "https://github.com/ppati000" }}
+            <a href="{{ $github_href }}" style="margin-left: 1px" class="github no-underline-ns" aria-label="share on LinkedIn">
+              {{ partialCached "svg/github.svg" (dict "size" $icon_size) $icon_size }}
+            </a>
+          </li>
         </ul>
       {{ end }}
       {{ partialCached "social-follow.html" . }}
