@@ -1,4 +1,7 @@
 baseURL = "http://patrick.engineering"
 languageCode = "en-us"
-title = "Patrick Petrovic | Software Engineer"
+title = "Patrick's Engineering Blog"
 theme = "ppati000"
+
+[params]
+  author = "Patrick Petrovic"
