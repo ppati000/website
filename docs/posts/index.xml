@@ -6,15 +6,15 @@
     <description>Recent content in Posts on Patrick&#39;s Engineering Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 Mar 2021 20:37:12 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Apr 2021 20:37:12 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Coming Soon</title>
+      <title>Hello World</title>
       <link>http://patrick.engineering/posts/welcome/</link>
-      <pubDate>Mon, 29 Mar 2021 20:37:12 +0200</pubDate>
+      <pubDate>Thu, 01 Apr 2021 20:37:12 +0200</pubDate>
       
       <guid>http://patrick.engineering/posts/welcome/</guid>
-      <description>Welcome to my blog! I&amp;rsquo;ll publish emotional rants and other random thoughts here every sometimes. Until then, I&amp;rsquo;m enjoying the sun for a bit.
- </description>
+      <description>Welcome to my blog and bienvenid@s! I&amp;rsquo;ll publish emotional rants and other random thoughts here every sometimes. Until then, I&amp;rsquo;ll be enjoying the sun for a bit.
+Note: This post is not an April Fools&#39; joke.</description>
     </item>
     
   </channel>
