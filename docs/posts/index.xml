@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Patrick&#39;s Engineering Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Apr 2021 20:37:12 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Apr 2021 20:30:21 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I Actually Like Slack</title>
+      <link>http://patrick.engineering/posts/slack/</link>
+      <pubDate>Tue, 06 Apr 2021 20:30:21 +0200</pubDate>
+      
+      <guid>http://patrick.engineering/posts/slack/</guid>
+      <description>As a software engineer, you really need your focus time. Unfortunately, distractions are everywhere! It might be snowing outside, or you might be wondering if now is the perfect time to get a coffee. Then it happens—someone has used Slack&amp;rsquo;s @channel tag to completely interrupt everybody else, including you.
+This scenario may sound familiar to you. The reason is that Slack has given the nuclear codes to everyone in the company, allowing them to destroy productivity with one single command.</description>
+    </item>
+    
     <item>
       <title>Hello World</title>
       <link>http://patrick.engineering/posts/welcome/</link>
