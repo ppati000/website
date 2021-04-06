@@ -8,7 +8,7 @@ As a software engineer, you really need your focus time.
 Unfortunately, distractions are everywhere! It might be snowing outside, or you might be wondering if *now* is the perfect time to get a coffee.
 Then it happens—someone has used Slack's `@channel` tag to completely interrupt everybody else, including you.
 
-This scenario may sound familiar to you. The reason is that Slack has given the nuclear codes to everyone in the company, allowing them to destroy productivity with one single command. 
+This scenario may sound familiar. The reason is that Slack has given the nuclear codes to everyone in the company, allowing them to destroy productivity with one single command. 
 Stories like these have led to a certain aversion to the otherwise successful communication tool.
 In a (pre-Covid) 2020 [Wired article](https://www.wired.co.uk/article/slack-ruining-work), Slack was even accused of having "ruined work".
 
