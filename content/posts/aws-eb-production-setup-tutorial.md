@@ -1,5 +1,6 @@
 ---
 title: "Launch Your API on AWS Free Tier — A Step-By-Step Guide"
+author: "Patrick Petrovic"
 date: 2021-06-08T18:03:35+02:00
 ---
 
