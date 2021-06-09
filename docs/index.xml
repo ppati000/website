@@ -6,7 +6,18 @@
     <description>Recent content on Patrick&#39;s Engineering Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Apr 2021 20:30:21 +0200</lastBuildDate><atom:link href="http://patrick.engineering/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Jun 2021 18:03:35 +0200</lastBuildDate><atom:link href="http://patrick.engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Launch Your API on AWS Free Tier — A Step-By-Step Guide</title>
+      <link>http://patrick.engineering/posts/aws-eb-production-setup-tutorial/</link>
+      <pubDate>Tue, 08 Jun 2021 18:03:35 +0200</pubDate>
+      
+      <guid>http://patrick.engineering/posts/aws-eb-production-setup-tutorial/</guid>
+      <description>Recently, I was trying to deploy a backend API for my favorite party game Ryggio on Amazon Web Services (AWS). To my surprise, a comprehensive1 deployment guide was missing—which motivated this attempt to create one.
+This guide attempts to include everything for your API to be production-ready, including:
+ Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS)  The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier.</description>
+    </item>
+    
     <item>
       <title>I Actually Like Slack</title>
       <link>http://patrick.engineering/posts/slack/</link>

@@ -2,13 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://patrick.engineering/posts/slack/</loc>
-    <lastmod>2021-04-06T20:30:21+02:00</lastmod>
+    <loc>http://patrick.engineering/posts/aws-eb-production-setup-tutorial/</loc>
+    <lastmod>2021-06-08T18:03:35+02:00</lastmod>
   </url><url>
     <loc>http://patrick.engineering/</loc>
-    <lastmod>2021-04-06T20:30:21+02:00</lastmod>
+    <lastmod>2021-06-08T18:03:35+02:00</lastmod>
   </url><url>
     <loc>http://patrick.engineering/posts/</loc>
+    <lastmod>2021-06-08T18:03:35+02:00</lastmod>
+  </url><url>
+    <loc>http://patrick.engineering/posts/slack/</loc>
     <lastmod>2021-04-06T20:30:21+02:00</lastmod>
   </url><url>
     <loc>http://patrick.engineering/posts/welcome/</loc>
