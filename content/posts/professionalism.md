@@ -28,8 +28,8 @@ Reading through the diff before pushing code to review brings lots of value:
 * Coworkers are less likely to encounter distractions, allowing them to focus on more fundamental issues (e.g., correctness and maintainability of the solution).
 Automated tools can already catch some distractions, but they are mostly limited to syntax and formatting issues.
 * Catching some issues early might save an additional round-trip time between the author and the reviewer.
-* Personally, I gain a more holistic view of my code. This allows me to document certain decisions explicitly when asking for a review.
-* Finally, I feel good for detecting and fixing the stupidity that I created a few minutes ago.
+* Personally, I gain a more holistic view of my code. This allows me to document certain decisions explicitly before asking for a review.
+* Finally, I feel good for detecting and fixing the mess I created a few minutes ago.
 
 I am not sure if self-reviewing code works for everyone—but I can recommend trying it.
 Even a quick glance might already be beneficial.
@@ -59,9 +59,9 @@ Nonetheless, they _will_ care about users not receiving up-to-date data.
 
 How did I learn about ownership and communication?
 A few years back, when I was an intern, I had only ever coded for fun.
-No one cared about the correctness of my code, how clean it was, or if anyone would understand it a few months later.
+Back then, no one cared about the correctness of my code, how clean it was, or if anyone would understand it in the future.
 
-A few months into my internship, I received feedback about a formatting issue (back then, no linter was part of the CI pipeline, but that's not my point).
+A few months into my internship, I received feedback about a formatting issue (no linter was part of the CI pipeline, but that's not my point).
 The reviewer suggested that I check my code for such issues before asking for reviews, including this line that stuck with me:
 
 > This should be a habit for a professional.
