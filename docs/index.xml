@@ -15,7 +15,7 @@
       <guid>http://patrick.engineering/posts/aws-eb-production-setup-tutorial/</guid>
       <description>Recently, I was trying to deploy a backend API for my favorite party game Ryggio on Amazon Web Services (AWS). To my surprise, a comprehensive1 deployment guide was missing—which motivated this attempt to create one.
 This guide attempts to include everything for your API to be production-ready, including:
- Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS)  The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier.</description>
+Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS) The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier.</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@ This scenario may sound familiar. The reason is that Slack has given the nuclear
       
       <guid>http://patrick.engineering/posts/welcome/</guid>
       <description>Welcome to my blog and bienvenid@s! I&amp;rsquo;ll publish emotional rants and other random thoughts here every sometimes. Until then, I&amp;rsquo;ll be enjoying the sun for a bit.
-Note: This post is not an April Fools&#39; joke.</description>
+Note: This post is not an April Fools&amp;rsquo; joke.</description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@ Note: This post is not an April Fools&#39; joke.</description>
       <pubDate>Mon, 29 Mar 2021 20:37:12 +0200</pubDate>
       
       <guid>http://patrick.engineering/about/</guid>
-      <description>I am a software engineer based in Germany and currently working in backend @ Jodel. I&amp;rsquo;m also pursuing a master&amp;rsquo;s degree in computer science @ Karlsruhe Institute of Technology.
+      <description>I am a software engineer based in Berlin, Germany. I am currently working as Lead Backend Engineer @ Jodel. I have a master&amp;rsquo;s degree in computer science from Karlsruhe Institute of Technology.
 Apart from drinking tea and reading Hacker News comments of highly varying quality, I love to code for fun. Check out Ryggio for example – made by two friends of mine from Sweden 🇸🇪 and me.
 Say hello! Twitter | LinkedIn | Email </description>
     </item>

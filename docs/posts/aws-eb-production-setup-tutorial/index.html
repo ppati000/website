@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Recently, I was trying to deploy a backend API for my favorite party game Ryggio on Amazon Web Services (AWS). To my surprise, a comprehensive1 deployment guide was missing—which motivated this attempt to create one.
 This guide attempts to include everything for your API to be production-ready, including:
- Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS)  The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier.">
-    <meta name="generator" content="Hugo 0.82.0" />
+Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS) The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier.">
+    <meta name="generator" content="Hugo 0.102.3" />
     
     
       <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
@@ -35,23 +35,23 @@ This guide attempts to include everything for your API to be production-ready, i
     <meta property="og:title" content="Launch Your API on AWS Free Tier — A Step-By-Step Guide" />
 <meta property="og:description" content="Recently, I was trying to deploy a backend API for my favorite party game Ryggio on Amazon Web Services (AWS). To my surprise, a comprehensive1 deployment guide was missing—which motivated this attempt to create one.
 This guide attempts to include everything for your API to be production-ready, including:
- Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS)  The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier." />
+Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS) The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://patrick.engineering/posts/aws-eb-production-setup-tutorial/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-06-08T18:03:35&#43;02:00" />
-<meta property="article:modified_time" content="2021-06-08T18:03:35&#43;02:00" />
+<meta property="article:published_time" content="2021-06-08T18:03:35+02:00" />
+<meta property="article:modified_time" content="2021-06-08T18:03:35+02:00" />
 
 <meta itemprop="name" content="Launch Your API on AWS Free Tier — A Step-By-Step Guide">
 <meta itemprop="description" content="Recently, I was trying to deploy a backend API for my favorite party game Ryggio on Amazon Web Services (AWS). To my surprise, a comprehensive1 deployment guide was missing—which motivated this attempt to create one.
 This guide attempts to include everything for your API to be production-ready, including:
- Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS)  The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier."><meta itemprop="datePublished" content="2021-06-08T18:03:35&#43;02:00" />
-<meta itemprop="dateModified" content="2021-06-08T18:03:35&#43;02:00" />
-<meta itemprop="wordCount" content="1164">
+Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS) The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier."><meta itemprop="datePublished" content="2021-06-08T18:03:35+02:00" />
+<meta itemprop="dateModified" content="2021-06-08T18:03:35+02:00" />
+<meta itemprop="wordCount" content="1163">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Launch Your API on AWS Free Tier — A Step-By-Step Guide"/>
 <meta name="twitter:description" content="Recently, I was trying to deploy a backend API for my favorite party game Ryggio on Amazon Web Services (AWS). To my surprise, a comprehensive1 deployment guide was missing—which motivated this attempt to create one.
 This guide attempts to include everything for your API to be production-ready, including:
- Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS)  The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier."/>
+Basic configuration of Amazon Elastic Beanstalk How to use a custom domain Securing your API using TLS encryption (HTTPS) The best of all this: Apart from the domain, you can get all of this for free2 using AWS Free Tier."/>
 
 	
   </head>
@@ -241,86 +241,86 @@ This guide uses Namecheap, but any other provider will have a similar interface.
 This is a bit more complex. It&rsquo;s hard to cover all of it, so please follow <a href="https://medium.com/@hzburki/configure-ssl-certificate-elastic-beanstalk-single-instance-a2846211851b">this excellent guide</a> on how to create a TLS certificate using Certbot. If you follow the guide, you will obtain three files: <code>chain.pem</code>, <code>server.key</code> and <code>server.crt</code>.</p>
 <p>When the certificate files have been created, you&rsquo;ll need to configure your project to make use of them.
 First, add the following HTTPS configuration content to <code>.platform/nginx/conf.d/https.conf</code> in your project directory. This will configure the environment&rsquo;s nginx proxy to work with HTTPS connections.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#75715e"># .platform/nginx/conf.d/https.conf
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">server</span> {
-    <span style="color:#f92672">listen</span> <span style="color:#ae81ff">443</span>;
-    <span style="color:#f92672">server_name</span> <span style="color:#e6db74">localhost</span>;
-
-    <span style="color:#f92672">ssl</span> <span style="color:#66d9ef">on</span>;
-    <span style="color:#f92672">ssl_certificate</span> <span style="color:#e6db74">/etc/pki/tls/certs/server.crt</span>;
-    <span style="color:#f92672">ssl_certificate_key</span> <span style="color:#e6db74">/etc/pki/tls/certs/server.key</span>;
-
-    <span style="color:#f92672">ssl_session_timeout</span> <span style="color:#ae81ff">5m</span>;
-
-    <span style="color:#f92672">ssl_protocols</span> <span style="color:#e6db74">TLSv1</span> <span style="color:#e6db74">TLSv1.1</span> <span style="color:#e6db74">TLSv1.2</span>;
-    <span style="color:#f92672">ssl_prefer_server_ciphers</span> <span style="color:#66d9ef">on</span>;
-
-    <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
-        <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://docker</span>; <span style="color:#75715e"># Forward requests to our container.
-</span><span style="color:#75715e"></span>        <span style="color:#f92672">proxy_http_version</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">.1</span>;
-
-        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Connection</span> <span style="color:#e6db74">&#34;&#34;</span>;
-        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Host</span> $host;
-        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Real-IP</span> $remote_addr;
-        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-For</span> $proxy_add_x_forwarded_for;
-        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-Proto</span> <span style="color:#e6db74">https</span>;
-    }
-}
-</code></pre></div><p>Notice how the above configuration points to the server&rsquo;s TLS certificate and private key in <code>/etc/pki/tls/certs/</code>.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#75715e"># .platform/nginx/conf.d/https.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">listen</span> <span style="color:#ae81ff">443</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">server_name</span> <span style="color:#e6db74">localhost</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ssl</span> <span style="color:#66d9ef">on</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ssl_certificate</span> <span style="color:#e6db74">/etc/pki/tls/certs/server.crt</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ssl_certificate_key</span> <span style="color:#e6db74">/etc/pki/tls/certs/server.key</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ssl_session_timeout</span> <span style="color:#ae81ff">5m</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ssl_protocols</span> <span style="color:#e6db74">TLSv1</span> <span style="color:#e6db74">TLSv1.1</span> <span style="color:#e6db74">TLSv1.2</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ssl_prefer_server_ciphers</span> <span style="color:#66d9ef">on</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_pass</span> <span style="color:#e6db74">http://docker</span>; <span style="color:#75715e"># Forward requests to our container.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#f92672">proxy_http_version</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">.1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Connection</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Host</span> $host;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Real-IP</span> $remote_addr;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-For</span> $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">X-Forwarded-Proto</span> <span style="color:#e6db74">https</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Notice how the above configuration points to the server&rsquo;s TLS certificate and private key in <code>/etc/pki/tls/certs/</code>.
 Next, we will instruct Elastic Beanstalk to provide the files in this directory. To do this, create a <code>.ebextensions/.config</code> file with the content given below. Of course, you will need to add the contents of your actual certificate files.</p>
 <p><strong>Note:</strong> The certificate data must be kept private. Do <strong>not</strong> commit this file to your regular version control system<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># .ebextensions/.config</span>
-<span style="color:#75715e"># Partly taken from https://medium.com/@hzburki/configure-ssl-certificate-elastic-beanstalk-single-instance-a2846211851b.</span>
-
-<span style="color:#75715e"># Install the required mod_ssl dependency.</span>
-<span style="color:#f92672">packages</span>:
-  <span style="color:#f92672">yum</span>:
-    <span style="color:#f92672">mod_ssl </span>: []
-
-<span style="color:#75715e"># Provide the TLS files in /etc/pki/tls/certs/.</span>
-<span style="color:#f92672">files</span>:
-  <span style="color:#f92672">/etc/pki/tls/certs/server.crt</span>:
-    <span style="color:#f92672">mode</span>: <span style="color:#e6db74">&#34;000400&#34;</span>
-    <span style="color:#f92672">owner</span>: <span style="color:#ae81ff">root</span>
-    <span style="color:#f92672">group</span>: <span style="color:#ae81ff">root</span>
-    <span style="color:#f92672">content</span>: |<span style="color:#e6db74">
-</span><span style="color:#e6db74">      -----BEGIN CERTIFICATE-----
-</span><span style="color:#e6db74">      ...
-</span><span style="color:#e6db74">      -----END CERTIFICATE-----</span>      
-
-  <span style="color:#f92672">/etc/pki/tls/certs/server.key</span>:
-    <span style="color:#f92672">mode</span>: <span style="color:#e6db74">&#34;000400&#34;</span>
-    <span style="color:#f92672">owner</span>: <span style="color:#ae81ff">root</span>
-    <span style="color:#f92672">group</span>: <span style="color:#ae81ff">root</span>
-    <span style="color:#f92672">content</span>: |<span style="color:#e6db74">
-</span><span style="color:#e6db74">      -----BEGIN PRIVATE KEY-----
-</span><span style="color:#e6db74">      ...
-</span><span style="color:#e6db74">      -----END PRIVATE KEY-----
-</span><span style="color:#e6db74">      </span>      
-  <span style="color:#f92672">/etc/pki/tls/certs/chain.pem</span>:
-    <span style="color:#f92672">mode</span>: <span style="color:#e6db74">&#34;000400&#34;</span>
-    <span style="color:#f92672">owner</span>: <span style="color:#ae81ff">root</span>
-    <span style="color:#f92672">group</span>: <span style="color:#ae81ff">root</span>
-    <span style="color:#f92672">content</span>: |<span style="color:#e6db74">
-</span><span style="color:#e6db74">      -----BEGIN CERTIFICATE-----
-</span><span style="color:#e6db74">      ...
-</span><span style="color:#e6db74">      -----END CERTIFICATE-----
-</span><span style="color:#e6db74">      -----BEGIN CERTIFICATE-----
-</span><span style="color:#e6db74">      ...
-</span><span style="color:#e6db74">      -----END CERTIFICATE-----</span>      
-
-<span style="color:#75715e"># Allow traffic to reach the instance via port 443.</span>
-<span style="color:#75715e"># See https://aws.amazon.com/es/premiumsupport/knowledge-center/elastic-beanstalk-https-configuration/.</span>
-<span style="color:#f92672">Resources</span>:
-  <span style="color:#f92672">sslSecurityGroupIngress</span>:
-    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::EC2::SecurityGroupIngress</span>
-    <span style="color:#f92672">Properties</span>:
-      <span style="color:#f92672">GroupId</span>: {<span style="color:#e6db74">&#34;Fn::GetAtt&#34;</span> : [<span style="color:#e6db74">&#34;AWSEBSecurityGroup&#34;</span>, <span style="color:#e6db74">&#34;GroupId&#34;</span>]}
-      <span style="color:#f92672">IpProtocol</span>: <span style="color:#ae81ff">tcp</span>
-      <span style="color:#f92672">ToPort</span>: <span style="color:#ae81ff">443</span>
-      <span style="color:#f92672">FromPort</span>: <span style="color:#ae81ff">443</span>
-      <span style="color:#f92672">CidrIp</span>: <span style="color:#ae81ff">0.0.0.0</span><span style="color:#ae81ff">/0</span>
-</code></pre></div><p>Finally, create a new zip archive of your project, including the newly created files! You can upload and deploy the new archive by navigating to <em>Application Versions</em> in Elastic Beanstalk.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#75715e"># .ebextensions/.config</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Partly taken from https://medium.com/@hzburki/configure-ssl-certificate-elastic-beanstalk-single-instance-a2846211851b.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Install the required mod_ssl dependency.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">packages</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">yum</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">mod_ssl </span>: []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Provide the TLS files in /etc/pki/tls/certs/.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">files</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">/etc/pki/tls/certs/server.crt</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">mode</span>: <span style="color:#e6db74">&#34;000400&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">owner</span>: <span style="color:#ae81ff">root</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">group</span>: <span style="color:#ae81ff">root</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">content</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -----BEGIN CERTIFICATE-----
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      ...
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -----END CERTIFICATE-----</span>      
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">/etc/pki/tls/certs/server.key</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">mode</span>: <span style="color:#e6db74">&#34;000400&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">owner</span>: <span style="color:#ae81ff">root</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">group</span>: <span style="color:#ae81ff">root</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">content</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -----BEGIN PRIVATE KEY-----
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      ...
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -----END PRIVATE KEY-----
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      </span>      
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">/etc/pki/tls/certs/chain.pem</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">mode</span>: <span style="color:#e6db74">&#34;000400&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">owner</span>: <span style="color:#ae81ff">root</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">group</span>: <span style="color:#ae81ff">root</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">content</span>: |<span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -----BEGIN CERTIFICATE-----
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      ...
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -----END CERTIFICATE-----
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -----BEGIN CERTIFICATE-----
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      ...
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      -----END CERTIFICATE-----</span>      
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Allow traffic to reach the instance via port 443.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># See https://aws.amazon.com/es/premiumsupport/knowledge-center/elastic-beanstalk-https-configuration/.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Resources</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">sslSecurityGroupIngress</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Type</span>: <span style="color:#ae81ff">AWS::EC2::SecurityGroupIngress</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Properties</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">GroupId</span>: {<span style="color:#e6db74">&#34;Fn::GetAtt&#34;</span> : [<span style="color:#e6db74">&#34;AWSEBSecurityGroup&#34;</span>, <span style="color:#e6db74">&#34;GroupId&#34;</span>]}
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">IpProtocol</span>: <span style="color:#ae81ff">tcp</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">ToPort</span>: <span style="color:#ae81ff">443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">FromPort</span>: <span style="color:#ae81ff">443</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">CidrIp</span>: <span style="color:#ae81ff">0.0.0.0</span><span style="color:#ae81ff">/0</span>
+</span></span></code></pre></div><p>Finally, create a new zip archive of your project, including the newly created files! You can upload and deploy the new archive by navigating to <em>Application Versions</em> in Elastic Beanstalk.
 If you&rsquo;ve followed this tutorial until here, this is the end result:</p>
 <p><img src="/posts/aws-eb-production-setup-tutorial/tls.png" alt="The API running on HTTPS and a custom domain."></p>
 <h1 id="conclusion">Conclusion</h1>
@@ -328,23 +328,23 @@ If you&rsquo;ve followed this tutorial until here, this is the end result:</p>
 Especially TLS encryption is still somewhat difficult to set up if you&rsquo;re not used to infrastructure-related work.
 I hope this guide saved you some time&mdash;and hopefully very soon, you&rsquo;ll have your first API user!
 If you liked this tutorial, please feel free to follow me on <a href="https://twitter.com/ppati000">Twitter</a> or <a href="https://www.linkedin.com/in/patrick-petrovic/">LinkedIn</a>. Enjoy!</p>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p>A good, yet not entirely complete guide which this post is partly based on is available <a href="https://medium.com/@hzburki/configure-ssl-certificate-elastic-beanstalk-single-instance-a2846211851b">here</a>. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p>A good, yet not entirely complete guide which this post is partly based on is available <a href="https://medium.com/@hzburki/configure-ssl-certificate-elastic-beanstalk-single-instance-a2846211851b">here</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
-<p>No guarantee here as this may depend on region and time&mdash;always make sure to check Amazon&rsquo;s pricing!s <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2">
+<p>No guarantee here as this may depend on region and time&mdash;always make sure to check Amazon&rsquo;s pricing!s&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
-<p>Well, that depends. If the app isn&rsquo;t reachable yet even though it runs fine using your Elastic Beanstalk URL, grind yourself some coffee and check back later. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3">
+<p>Well, that depends. If the app isn&rsquo;t reachable yet even though it runs fine using your Elastic Beanstalk URL, grind yourself some coffee and check back later.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
-<p>In the <a href="https://medium.com/@hzburki/configure-ssl-certificate-elastic-beanstalk-single-instance-a2846211851b">aforementioned guide</a>, certificates are uploaded to S3 instead of including them in the project directory. This is more secure because it stops you from accidentally publishing your server&rsquo;s private keys on GitHub. However, access control between Elastic Beanstalk and S3 is hard to do right, which is why this approach is not covered here. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:4">
+<p>In the <a href="https://medium.com/@hzburki/configure-ssl-certificate-elastic-beanstalk-single-instance-a2846211851b">aforementioned guide</a>, certificates are uploaded to S3 instead of including them in the project directory. This is more secure because it stops you from accidentally publishing your server&rsquo;s private keys on GitHub. However, access control between Elastic Beanstalk and S3 is hard to do right, which is why this approach is not covered here.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 <ul class="pa0">
   
 </ul>
@@ -396,7 +396,7 @@ If you liked this tutorial, please feel free to follow me on <a href="https://tw
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://patrick.engineering" >
-    &copy;  Patrick Petrovic 2021 
+    &copy;  Patrick Petrovic 2022 
   </a>
     <div>
 
