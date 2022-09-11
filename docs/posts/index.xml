@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Patrick&#39;s Engineering Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Jun 2021 18:03:35 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 10 Sep 2022 17:55:35 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Professionalism in Software Engineering</title>
+      <link>http://patrick.engineering/posts/professionalism/</link>
+      <pubDate>Sat, 10 Sep 2022 17:55:35 +0200</pubDate>
+      
+      <guid>http://patrick.engineering/posts/professionalism/</guid>
+      <description>Having worked as a software engineer for a few years, it turns out software engineering is a profession like many others: you are part of a team with fellow humans, and working to achieve something in a collaborative fashion.
+I find it important that we enjoy working with each other. I would like to be a reliable, cooperative, and helpful coworker. In short, I would like to be a professional (but never boring) version of myself.</description>
+    </item>
+    
     <item>
       <title>Launch Your API on AWS Free Tier — A Step-By-Step Guide</title>
       <link>http://patrick.engineering/posts/aws-eb-production-setup-tutorial/</link>
