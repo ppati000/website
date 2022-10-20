@@ -13,6 +13,8 @@ jobs:
         run: hugo -d docs
       - name: Commit and push
         run: |
+          git config --global user.email "ppati000@me.com"
+          git config --global user.name "Patrick Petrovic"
           git add -A
           git commit -m "[bleep bloop I'm a robot] Build website"
           git push
