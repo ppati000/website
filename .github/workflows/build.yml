@@ -1,0 +1,20 @@
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Hugo
+        run: sudo apt-get install hugo
+      - name: Run Hugo
+        run: hugo -d docs
+      - name: Commit and push
+        run: |
+          git add -A
+          git commit -m "[bleep bloop I'm a robot] Build website"
+          git push
+
+
