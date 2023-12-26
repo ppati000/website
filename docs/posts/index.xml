@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Patrick&#39;s Engineering Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Sep 2022 17:55:35 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Dec 2023 08:30:21 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PostgreSQL: 3 Things to Know About UPDATE Statements</title>
+      <link>http://patrick.engineering/posts/postgres-internals/</link>
+      <pubDate>Tue, 26 Dec 2023 08:30:21 +0200</pubDate>
+      
+      <guid>http://patrick.engineering/posts/postgres-internals/</guid>
+      <description>I recently finished reading PostgreSQL 14 Internals by Egor Rogov. This book might be the best PostgreSQL resource besides the official documentation. I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
+One particularly interesting topic is PostgreSQL&amp;rsquo;s execution of UPDATE statements. Updates in relational databases are naturally complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL.</description>
+    </item>
+    
     <item>
       <title>Professionalism in Software Engineering</title>
       <link>http://patrick.engineering/posts/professionalism/</link>
