@@ -1,7 +1,7 @@
 ---
 title: "PostgreSQL: How UPDATE queries work"
 author: "Patrick Petrovic"
-date: 2023-12-27T08:30:21+02:00
+date: 2023-12-26T08:30:21+02:00
 draft: true
 ---
 
