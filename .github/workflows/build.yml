@@ -10,7 +10,7 @@ jobs:
       - name: Install Hugo
         run: sudo apt-get install hugo
       - name: Run Hugo
-        run: hugo -d docs
+        run: hugo -d docs --buildDrafts
       - name: Commit and push
         run: |
           git config --global user.email "ppati000@me.com"
@@ -18,5 +18,3 @@ jobs:
           git add -A
           git commit -m "[bleep bloop I'm a robot] Build website"
           git push
-
-
