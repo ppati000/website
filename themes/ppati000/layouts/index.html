@@ -6,6 +6,7 @@
   {{ $mainSections := .Site.Params.mainSections | default (slice "post") }}
   {{/* Create a variable with that section to use in multiple places. */}}
   {{ $section := where .Site.RegularPages "Section" "in" $mainSections }}
+  {{ $section = where $section "Draft" false }}
   {{/* Check to see if the section is defined for ranging through it */}}
   {{ $section_count := len $section }}
   {{ if ge $section_count 1 }}
