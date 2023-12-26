@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 26 Dec 2023 08:30:21 +0200</lastBuildDate><atom:link href="http://patrick.engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>PostgreSQL: 3 Things to Know About UPDATE Statements</title>
+      <title>PostgreSQL Internals: 3 Things to Know About UPDATE Statements</title>
       <link>http://patrick.engineering/posts/postgres-internals/</link>
       <pubDate>Tue, 26 Dec 2023 08:30:21 +0200</pubDate>
       

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>PostgreSQL: 3 Things to Know About UPDATE Statements | Patrick&#39;s Engineering Blog</title>
+    <title>PostgreSQL Internals: 3 Things to Know About UPDATE Statements | Patrick&#39;s Engineering Blog</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. This book might be the best PostgreSQL resource besides the official documentation. I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
 One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are naturally complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL.">
@@ -31,7 +31,7 @@ One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE sta
 
     
 
-    <meta property="og:title" content="PostgreSQL: 3 Things to Know About UPDATE Statements" />
+    <meta property="og:title" content="PostgreSQL Internals: 3 Things to Know About UPDATE Statements" />
 <meta property="og:description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. This book might be the best PostgreSQL resource besides the official documentation. I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
 One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are naturally complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL." />
 <meta property="og:type" content="article" />
@@ -39,13 +39,13 @@ One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE sta
 <meta property="article:published_time" content="2023-12-26T08:30:21+02:00" />
 <meta property="article:modified_time" content="2023-12-26T08:30:21+02:00" />
 
-<meta itemprop="name" content="PostgreSQL: 3 Things to Know About UPDATE Statements">
+<meta itemprop="name" content="PostgreSQL Internals: 3 Things to Know About UPDATE Statements">
 <meta itemprop="description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. This book might be the best PostgreSQL resource besides the official documentation. I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
 One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are naturally complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL."><meta itemprop="datePublished" content="2023-12-26T08:30:21+02:00" />
 <meta itemprop="dateModified" content="2023-12-26T08:30:21+02:00" />
 <meta itemprop="wordCount" content="1275">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="PostgreSQL: 3 Things to Know About UPDATE Statements"/>
+<meta name="twitter:title" content="PostgreSQL Internals: 3 Things to Know About UPDATE Statements"/>
 <meta name="twitter:description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. This book might be the best PostgreSQL resource besides the official documentation. I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
 One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are naturally complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL."/>
 
@@ -144,7 +144,7 @@ One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE sta
   
   <article class="flex-l flex-wrap justify-between mw8 center ph3">
     <header class="mt4 w-100">
-      <h1 class="f1 mt3 mb0">PostgreSQL: 3 Things to Know About UPDATE Statements</h1>
+      <h1 class="f1 mt3 mb0">PostgreSQL Internals: 3 Things to Know About UPDATE Statements</h1>
       
       <p class="tracked">
           By <strong>
