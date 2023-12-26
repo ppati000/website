@@ -6,11 +6,7 @@
     <description>Recent content in Posts on Patrick&#39;s Engineering Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Sep 2022 17:55:35 +0200</lastBuildDate>
-    
-	<atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 10 Sep 2022 17:55:35 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Professionalism in Software Engineering</title>
       <link>http://patrick.engineering/posts/professionalism/</link>
@@ -49,7 +45,7 @@ This scenario may sound familiar. The reason is that Slack has given the nuclear
       
       <guid>http://patrick.engineering/posts/welcome/</guid>
       <description>Welcome to my blog and bienvenid@s! I&amp;rsquo;ll publish emotional rants and other random thoughts here every sometimes. Until then, I&amp;rsquo;ll be enjoying the sun for a bit.
-Note: This post is not an April Fools&amp;rsquo; joke.</description>
+Note: This post is not an April Fools&#39; joke.</description>
     </item>
     
   </channel>
