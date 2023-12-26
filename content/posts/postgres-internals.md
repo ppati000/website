@@ -1,5 +1,5 @@
 ---
-title: "PostgreSQL: 3 Things to Know About UPDATE Statements"
+title: "PostgreSQL Internals: 3 Things to Know About UPDATE Statements"
 author: "Patrick Petrovic"
 date: 2023-12-26T08:30:21+02:00
 draft: true
