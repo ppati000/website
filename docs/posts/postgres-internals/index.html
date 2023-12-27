@@ -6,8 +6,9 @@
     
     <title>PostgreSQL Internals: 3 Things to Know About UPDATE Statements | Patrick&#39;s Engineering Blog</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. This book might be the best PostgreSQL resource besides the official documentation. I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
-One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are naturally complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL.">
+    <meta name="description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. It is one of the great books that teach applied computer science without watering down the difficult parts.
+One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are inherently complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL. This can lead to surprises.
+1. Write Amplification PostgreSQL generally does not update rows in-place.">
     <meta name="generator" content="Hugo 0.92.2" />
     
     
@@ -32,22 +33,25 @@ One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE sta
     
 
     <meta property="og:title" content="PostgreSQL Internals: 3 Things to Know About UPDATE Statements" />
-<meta property="og:description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. This book might be the best PostgreSQL resource besides the official documentation. I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
-One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are naturally complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL." />
+<meta property="og:description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. It is one of the great books that teach applied computer science without watering down the difficult parts.
+One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are inherently complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL. This can lead to surprises.
+1. Write Amplification PostgreSQL generally does not update rows in-place." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://patrick.engineering/posts/postgres-internals/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-12-26T08:30:21+02:00" />
-<meta property="article:modified_time" content="2023-12-26T08:30:21+02:00" />
+<meta property="article:published_time" content="2023-12-27T12:15:00+01:00" />
+<meta property="article:modified_time" content="2023-12-27T12:15:00+01:00" />
 
 <meta itemprop="name" content="PostgreSQL Internals: 3 Things to Know About UPDATE Statements">
-<meta itemprop="description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. This book might be the best PostgreSQL resource besides the official documentation. I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
-One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are naturally complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL."><meta itemprop="datePublished" content="2023-12-26T08:30:21+02:00" />
-<meta itemprop="dateModified" content="2023-12-26T08:30:21+02:00" />
-<meta itemprop="wordCount" content="1275">
+<meta itemprop="description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. It is one of the great books that teach applied computer science without watering down the difficult parts.
+One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are inherently complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL. This can lead to surprises.
+1. Write Amplification PostgreSQL generally does not update rows in-place."><meta itemprop="datePublished" content="2023-12-27T12:15:00+01:00" />
+<meta itemprop="dateModified" content="2023-12-27T12:15:00+01:00" />
+<meta itemprop="wordCount" content="1262">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PostgreSQL Internals: 3 Things to Know About UPDATE Statements"/>
-<meta name="twitter:description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. This book might be the best PostgreSQL resource besides the official documentation. I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
-One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are naturally complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL."/>
+<meta name="twitter:description" content="I recently finished reading PostgreSQL 14 Internals by Egor Rogov. It is one of the great books that teach applied computer science without watering down the difficult parts.
+One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE statements. Updates in relational databases are inherently complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL. This can lead to surprises.
+1. Write Amplification PostgreSQL generally does not update rows in-place."/>
 
 	
   </head>
@@ -155,7 +159,7 @@ One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE sta
       </p>
       
       
-      <time class="f6 mv4 dib tracked" datetime="2023-12-26T08:30:21+02:00">December 26, 2023</time>
+      <time class="f6 mv4 dib tracked" datetime="2023-12-27T12:15:00+01:00">December 27, 2023</time>
 
       
       
@@ -182,10 +186,9 @@ One particularly interesting topic is PostgreSQL&rsquo;s execution of UPDATE sta
               font-size: 1.15rem;
           }
       </style><p>I recently finished reading <a href="https://postgrespro.com/community/books/internals">PostgreSQL 14 Internals</a> by Egor Rogov.
-This book might be the best PostgreSQL resource besides the official documentation.
-I consider it one of the rare books that teach applied computer science without watering down the difficult parts.</p>
+It is one of the great books that teach applied computer science without watering down the difficult parts.</p>
 <p>One particularly interesting topic is PostgreSQL&rsquo;s execution of <code>UPDATE</code> statements.
-Updates in relational databases are naturally complex.
+Updates in relational databases are inherently complex.
 They can be affected by conflicts, anomalies, and deadlocks.
 However, some behavior is specific to PostgreSQL. This can lead to surprises.</p>
 <h2 id="1-write-amplification">1. Write Amplification</h2>
@@ -214,9 +217,9 @@ There are more sources of write amplification:</p>
 <li>Indexes may have to be updated. This can be the case even if the updated column is not indexed <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</li>
 <li>PostgreSQL writes all changes to a write-ahead log (WAL) to ensure durability <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</li>
 </ul>
-<p>If disk I/O is approaching limits, it may be worth to investigate row sizes, update statements, and unused indexes <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<p>If disk I/O is approaching limits, it may be worth investigating row sizes, update statements, and unused indexes <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
 <h2 id="2-lost-updates">2. Lost Updates</h2>
-<p>The SQL standard<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> mandates that lost updates be prevented at any isolation level.
+<p>The SQL standard mandates that lost updates be prevented at any isolation level <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.
 Nonetheless, it is trivial to simulate a lost update in PostgreSQL.
 Consider an additional <code>followers_count</code> column and two transactions (Read Committed) that perform the following steps:</p>
 <ol>
@@ -276,19 +279,19 @@ The reason is that row locks are acquired in a non-deterministic order.</p>
 <span style="color:#66d9ef">SET</span> last_active <span style="color:#f92672">=</span> NOW()
 <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">=</span> <span style="color:#66d9ef">ANY</span> (<span style="color:#75715e">/* list of ids */</span>);
 </code></pre></div><p>The first transaction runs a sequential scan and updates all rows that match the <code>WHERE</code> clause.
-The update-related locks are acquired in the order of the sequential scan.
+Affected rows are locked in the order of the sequential scan.
 The second transaction can use the index on <code>id</code> to find the rows to update.
-The index scan might access affected rows in a different order.
+An index scan might access affected rows in a different order.
 Hence, it is possible that a circular dependency between locks arises.</p>
 <p>This particular scenario is most likely to occur when updating a large number of rows in a single transaction.
-Updating rows in batches can help to avoid deadlocks.
+Updating rows in smaller batches can help to avoid deadlocks.
 Batching can also fix performance issues caused by holding locks for an unnecessarily long time.
 If performance is not an issue, it may be enough to retry transactions that have been aborted because of a deadlock.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Many engineers have a good understanding of concepts like isolation levels, anomalies, and deadlocks.
+<p>Many engineers have a good theoretical understanding of isolation levels, anomalies, and deadlocks.
 However, PostgreSQL—like any other database—is a specific implementation with its own quirks.</p>
 <p><em>PostgreSQL 14 Internals</em> offers many more insights beyond the execution of update statements.
-The book a valuable resource for anyone working with PostgreSQL.
+The book is a valuable resource for anyone working with PostgreSQL.
 It covers data storage, query execution, caching, and indexing in great detail.
 I recommend it to anyone who uses PostgreSQL in production.</p>
 <section class="footnotes" role="doc-endnotes">

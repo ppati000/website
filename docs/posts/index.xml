@@ -6,15 +6,16 @@
     <description>Recent content in Posts on Patrick&#39;s Engineering Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Dec 2023 08:30:21 +0200</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Dec 2023 12:15:00 +0100</lastBuildDate><atom:link href="http://patrick.engineering/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PostgreSQL Internals: 3 Things to Know About UPDATE Statements</title>
       <link>http://patrick.engineering/posts/postgres-internals/</link>
-      <pubDate>Tue, 26 Dec 2023 08:30:21 +0200</pubDate>
+      <pubDate>Wed, 27 Dec 2023 12:15:00 +0100</pubDate>
       
       <guid>http://patrick.engineering/posts/postgres-internals/</guid>
-      <description>I recently finished reading PostgreSQL 14 Internals by Egor Rogov. This book might be the best PostgreSQL resource besides the official documentation. I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
-One particularly interesting topic is PostgreSQL&amp;rsquo;s execution of UPDATE statements. Updates in relational databases are naturally complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL.</description>
+      <description>I recently finished reading PostgreSQL 14 Internals by Egor Rogov. It is one of the great books that teach applied computer science without watering down the difficult parts.
+One particularly interesting topic is PostgreSQL&amp;rsquo;s execution of UPDATE statements. Updates in relational databases are inherently complex. They can be affected by conflicts, anomalies, and deadlocks. However, some behavior is specific to PostgreSQL. This can lead to surprises.
+1. Write Amplification PostgreSQL generally does not update rows in-place.</description>
     </item>
     
     <item>
