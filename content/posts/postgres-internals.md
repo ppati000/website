@@ -1,16 +1,15 @@
 ---
 title: "PostgreSQL Internals: 3 Things to Know About UPDATE Statements"
 author: "Patrick Petrovic"
-date: 2023-12-26T08:30:21+02:00
-draft: true
+date: 2023-12-27T12:15:00+01:00
+draft: false
 ---
 
 I recently finished reading [PostgreSQL 14 Internals](https://postgrespro.com/community/books/internals) by Egor Rogov.
-This book might be the best PostgreSQL resource besides the official documentation.
-I consider it one of the rare books that teach applied computer science without watering down the difficult parts.
+It is one of the great books that teach applied computer science without watering down the difficult parts.
 
 One particularly interesting topic is PostgreSQL's execution of `UPDATE` statements.
-Updates in relational databases are naturally complex.
+Updates in relational databases are inherently complex.
 They can be affected by conflicts, anomalies, and deadlocks.
 However, some behavior is specific to PostgreSQL. This can lead to surprises.
 
@@ -45,11 +44,11 @@ There are more sources of write amplification:
 * Indexes may have to be updated. This can be the case even if the updated column is not indexed [^5].
 * PostgreSQL writes all changes to a write-ahead log (WAL) to ensure durability [^6].
 
-If disk I/O is approaching limits, it may be worth to investigate row sizes, update statements, and unused indexes [^3].
+If disk I/O is approaching limits, it may be worth investigating row sizes, update statements, and unused indexes [^3].
 
 ## 2. Lost Updates
 
-The SQL standard[^8] mandates that lost updates be prevented at any isolation level.
+The SQL standard mandates that lost updates be prevented at any isolation level [^8].
 Nonetheless, it is trivial to simulate a lost update in PostgreSQL.
 Consider an additional `followers_count` column and two transactions (Read Committed) that perform the following steps:
 
@@ -129,23 +128,23 @@ WHERE id = ANY (/* list of ids */);
 ```
 
 The first transaction runs a sequential scan and updates all rows that match the `WHERE` clause.
-The update-related locks are acquired in the order of the sequential scan.
+Affected rows are locked in the order of the sequential scan.
 The second transaction can use the index on `id` to find the rows to update.
-The index scan might access affected rows in a different order.
+An index scan might access affected rows in a different order.
 Hence, it is possible that a circular dependency between locks arises.
 
 This particular scenario is most likely to occur when updating a large number of rows in a single transaction.
-Updating rows in batches can help to avoid deadlocks.
+Updating rows in smaller batches can help to avoid deadlocks.
 Batching can also fix performance issues caused by holding locks for an unnecessarily long time.
 If performance is not an issue, it may be enough to retry transactions that have been aborted because of a deadlock.
 
 ## Conclusion
 
-Many engineers have a good understanding of concepts like isolation levels, anomalies, and deadlocks.
+Many engineers have a good theoretical understanding of isolation levels, anomalies, and deadlocks.
 However, PostgreSQL—like any other database—is a specific implementation with its own quirks.
 
 *PostgreSQL 14 Internals* offers many more insights beyond the execution of update statements.
-The book a valuable resource for anyone working with PostgreSQL.
+The book is a valuable resource for anyone working with PostgreSQL.
 It covers data storage, query execution, caching, and indexing in great detail.
 I recommend it to anyone who uses PostgreSQL in production.
 
