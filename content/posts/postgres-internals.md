@@ -96,7 +96,7 @@ SET followers_count = followers_count + 1
 WHERE id = '...';
 ```
 
-This statement prevents lost updates at the Read Committed isolation level.
+This statement prevents lost updates at the Read Committed isolation level [^10].
 The second transaction waits for the first transaction to abort or commit, and then proceeds with execution.
 Therefore, no error is raised, and the overhead of retrying transactions can be avoided [^4].
 
@@ -148,6 +148,10 @@ The book is a valuable resource for anyone working with PostgreSQL.
 It covers data storage, query execution, caching, and indexing in great detail.
 I recommend it to anyone who uses PostgreSQL in production.
 
+<hr>
+
+→ *Discuss this post on [Hacker News](https://news.ycombinator.com/item?id=38781442).*
+
 [^1]: If a row becomes larger than 2 kB (default setting), PostgreSQL will apply a storage technique known as [TOAST](https://www.postgresql.org/docs/current/storage-toast.html).
 This technique moves partial data to separate physical tables.
 TOASTed data is usually not rewritten unless it has changed.
@@ -176,3 +180,7 @@ The reason is that the WAL makes it unnecessary to flush data pages to disk afte
 The first time I fixed a similar issue was at [Jodel](https://jodel.com/), in MongoDB.
 Post vote counts were incremented in application logic instead of using MongoDB's `$inc` operator.
 This caused about 1 in 1000 votes to be lost in posts with high activity.
+
+[^10]: As readers on [Hacker News](https://news.ycombinator.com/item?id=38781442) have pointed out, a more widely applicable solution is [SELECT FOR UPDATE](https://www.postgresql.org/docs/current/sql-select.html#SQL-FOR-UPDATE-SHARE).
+This clause lets the application safely perform arbitrary updates.
+However, throughput can suffer because the row must be locked during at least one round trip between database and application.
